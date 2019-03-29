@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'mycustomwidget.dart';
+import './menu/menu_drawer.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 void main() {
+
   runApp(new MyApp());
 }
 
@@ -14,6 +17,8 @@ class MyApp extends StatefulWidget{
 
 
 class _MyApplicationState extends State<MyApp> {
+
+
   //initial state widget
   String username = "";
   String password = "";
@@ -21,6 +26,8 @@ class _MyApplicationState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
+    FlutterStatusbarcolor.setStatusBarColor(Colors.deepOrange);
     return new MaterialApp(
       title: 'Custom Widget',
       debugShowCheckedModeBanner: false,
@@ -29,6 +36,7 @@ class _MyApplicationState extends State<MyApp> {
           title: new Text('Demo Custom Widget'),
           backgroundColor: Colors.deepOrange,
         ),
+        drawer: MenuDrawer(),
         body: new Container(
           padding: EdgeInsets.all(20.0),
           child: new Column(
