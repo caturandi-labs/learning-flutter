@@ -17,7 +17,8 @@ class _MyApplicationState extends State<MyApp> {
   //initial state widget
   String username = "";
   String password = "";
-  
+  String textLogin = "";
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -52,6 +53,7 @@ class _MyApplicationState extends State<MyApp> {
               new Container(
                 margin: const EdgeInsets.only(top: 20.0),
                 child: new TextField(
+                  obscureText: true,
                   onChanged: (String pass){
                     setState(() {
                       password = pass;
@@ -65,10 +67,28 @@ class _MyApplicationState extends State<MyApp> {
                               width: 1.0,
                               color: Colors.grey,
                               style: BorderStyle.solid
-                          )
-                      )
+                          ),
+
+                      ),
+
                   ),
                 ),
+              ),
+              new Container(
+                width: 300,
+                height: 50,
+                margin: EdgeInsets.only(top: 20.0),
+                child: new RaisedButton(
+                  onPressed: (){
+                    this.handleLogin();
+                  },
+                  child: new Text('LOGIN'),
+                ),
+              ),
+              new Container(
+
+                margin: EdgeInsets.only(top: 20.0),
+                child: new Text(textLogin)
               )
             ],
           ),
@@ -81,6 +101,12 @@ class _MyApplicationState extends State<MyApp> {
   void handleOnChange(String str) {
     this.setState((){
         username = str;
+    });
+  }
+
+  void handleLogin() {
+    this.setState((){
+      textLogin = "${username} Mencoba Login ";
     });
   }
 }
